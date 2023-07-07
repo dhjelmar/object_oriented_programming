@@ -30,7 +30,7 @@ print(mylist)
 
 ## the above is messy, so flatten with
 from itertools import chain
-list(chain.from_iterable(my_list))
+list(chain.from_iterable(mylist))
 
 # %%
 ## use enumerate to get a counter as work through list or tuple
