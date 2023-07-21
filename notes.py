@@ -38,3 +38,38 @@ for i, thing in enumerate(mylist):
     print('i = ', i, ' , thing = ', thing)
 
 # %%
+## Error handling
+age = input('Enter age as integer')
+try:
+    ## attempt coding that may throw an error
+    age = int(age)
+    print('Good number entered')
+except:
+    ## coding to handle the error
+    print('Invalid number')
+
+    ## Alternatley, can use, for example, "except ValueError:"
+    ## Python Standard Library errors can be TypeError, ValueError, NameError, 
+    ## ZeroDivisionError, and several others
+
+# %%
+## more complicated example with raise and exception name
+
+## use of raise to exit the method and return control back to the caller
+## which then needs to catch the exception in its except clause and so on
+## until the error is caught. If not caught, the program quits and an error
+## is displayed.
+
+class myexception(Exception):
+    pass
+
+age = input('Enter age as integer')
+try:
+    age = int(age)
+    print('Good number entered')
+except ValueError:  # ValueError is a standard Python exception; others include TypeError, NameError, ZeroDivisionError...
+    raise myexception('Invalid number')
+    ## or do not define custom exception and use
+    ## raise Exception('Invalid number')
+
+# %%
