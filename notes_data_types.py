@@ -6,7 +6,12 @@ import pandas as pd
 import numpy as np
 
 #%%
-## data types
+########################################################################## 
+# DATA TYPES
+
+## simple data types
+# immutable = xxxxxxxxxxxxxx
+# mutable   = xxxxxxxxxxxxxx
 mytuple = ('a', 'b', 'c')  # immutable
 mylist  = ['a', 'b', 'c']  # mutable
 # dictionary expects key:(value) entries where value can be multidimensional
@@ -20,7 +25,6 @@ mymatrix = np.array(mydf)
 complex_tuple = (1, 'b', ('c', 'd'), ['e', 'f'])
 complex_list =[1, 'b', ('c', 'd'), ['e', 'f']]
 # a dictionary is a list with a key for each list item
-complex_mydict = {'a':1, 'b':2, 'c':(3,4), 'd':('five', 'six'), 'e':[7,8]} 
 complex_mydict = {'a':1, 'b':(3,4), 'c': [1,2,3], 'd':mymatrix, 'e':mydf, 'f':complex_list}
 
 #%%
@@ -84,43 +88,3 @@ for i, thing in enumerate(mylist):
 # enumerate dictionary runs through each key
 for i, key in enumerate(mydict):
     print('i = ', i, ' , key = ', key, ', value = mydict[key] = ', mydict[key])
-
-
-
-# %%
-########################################################################
-## Error handling
-age = input('Enter age as integer')
-try:
-    ## attempt coding that may throw an error
-    age = int(age)
-    print('Good number entered')
-except:
-    ## coding to handle the error
-    print('Invalid number')
-
-    ## Alternatley, can use, for example, "except ValueError:"
-    ## Python Standard Library errors can be TypeError, ValueError, NameError, 
-    ## ZeroDivisionError, and several others
-
-# %%
-## more complicated example with raise and exception name
-
-## use of raise to exit the method and return control back to the caller
-## which then needs to catch the exception in its except clause and so on
-## until the error is caught. If not caught, the program quits and an error
-## is displayed.
-
-class myexception(Exception):
-    pass
-
-age = input('Enter age as integer')
-try:
-    age = int(age)
-    print('Good number entered')
-except ValueError:  # ValueError is a standard Python exception; others include TypeError, NameError, ZeroDivisionError...
-    raise myexception('Invalid number')
-    ## or do not define custom exception and use
-    ## raise Exception('Invalid number')
-
-# %%
