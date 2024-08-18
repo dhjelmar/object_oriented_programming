@@ -4,6 +4,7 @@
 # C-S-p 'Python: Select Interpreter'
 import pandas as pd
 import numpy as np
+from pprint import pprint  # https://pymotw.com/3/pprint/index.html
 
 ########################################################################
 # %%
@@ -70,12 +71,24 @@ class myclass():
 
 ##########################################################
 #%%
-# Simple use of myclass
+# Simple use of myclass and access parts
 ob1 =  myclass(1,2)
+print('vars(ob1) = ', vars(ob1))
+print()
+print('ob1.__dict__ = ', ob1.__dict__)
+print()
+print(f'{ob1.__dict__=}')
+print()
 print('x      = ', ob1.x)
 print('y      = ', ob1.y)
 print('sum    = ', ob1.sumit())
 print('divide = ', ob1.divideit())
+
+attrs_with_value = {attr: getattr(ob1, attr) for attr in dir(ob1)}
+print()
+
+#%%
+pprint(ob1)
 
 #%%
 # Test for exception error
@@ -83,4 +96,21 @@ ob2 = myclass(3,0)
 ob2.sumit()
 
 ob2.divideit()
+
+##########################################################
 #%%
+# list of objects
+ob_list = []
+x = [1,2,4,6]
+y = [2,0,1,10]
+#%%
+for i, xi in enumerate(x):
+    print('i=', i, '; xi=', xi, '; y[i]=', y[i])
+    # ob_list[i] = myclass(xi, y[i])
+    ob_list.append(myclass(xi, y[i]))
+
+##########################################################
+#%%
+# ACCESS OBJECT 
+print(ob_list)
+# %%
