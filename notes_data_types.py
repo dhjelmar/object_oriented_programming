@@ -5,8 +5,8 @@
 import pandas as pd
 import numpy as np
 
-#%%
 ########################################################################## 
+#%%
 # DATA TYPES
 
 ## simple data types
@@ -20,7 +20,81 @@ mydict = {'a':(1,2), 'b':(2,3), 'c':(3,4), 'd':('five', 'six'), 'e':[7,8]}
 mydf = pd.DataFrame(mydict)
 mymatrix = np.array(mydf)
 
+
+########################################################################## 
 #%%
+# DATAFRAMES
+
+#%%
+# print dataframe
+print(mydf)
+
+#%%
+# extract dataframe value
+print("mydf.loc[1, 'd'] =", mydf.loc[1, 'd'])
+
+#%%
+# extract dataframe column
+print("mydf['c'] =")
+print(mydf['c'])
+print()
+print("mydf['c'].tolist() =", mydf['c'].tolist())
+print()
+print("list(mydf['c']) =", list(mydf['c']), " but slower and different type")
+
+#%%
+# extract dataframe row
+print("mydf.loc[1,] =")
+print(mydf.loc[1,])
+print()
+print("mydf.loc[mydf.b==3,] =")
+print(mydf.loc[mydf.b==3,])
+print()
+print("mydf.loc[1,].tolist() =", mydf.loc[1,].tolist())
+
+
+
+
+########################################################################## 
+#%%
+# MATRICES (NUMPY)
+
+#%%
+# print dataframe
+print(mymatrix)
+
+#%%
+# extract dataframe value
+print("mymatrix[1, 3] =", mymatrix[1, 3])
+
+#%%
+##############################
+# dlh - not working yet
+##############################
+# extract matrix column
+print("mymatrix[2] =")
+print(mymatrix[2])
+#print()
+#print("mymatrix[2].tolist() =", mymatrix[2].tolist())
+#print()
+#print("list(mymatrix[2]) =", list(mymatrix[2]), " but slower and different type")
+
+#%%
+##############################
+# dlh - not working yet
+##############################
+print("mymatrix.loc[1,] =")
+print(mymatrix.loc[1,])
+print()
+print("mymatrix.loc[mymatrix.b==3,] =")
+print(mymatrix.loc[mymatrix.b==3,])
+print()
+print("mymatrix.loc[1,].tolist() =", mymatrix.loc[1,].tolist())
+
+
+
+###############################################################
+##%%
 ## data types can also be complex
 complex_tuple = (1, 'b', ('c', 'd'), ['e', 'f'])
 complex_list =[1, 'b', ('c', 'd'), ['e', 'f']]
@@ -28,7 +102,7 @@ complex_list =[1, 'b', ('c', 'd'), ['e', 'f']]
 complex_mydict = {'a':1, 'b':(3,4), 'c': [1,2,3], 'd':mymatrix, 'e':mydf, 'f':complex_list}
 
 #%%
-## views
+## dictionary views
 mydict = complex_mydict
 print('mydict.keys()')
 print(mydict.keys())
@@ -37,6 +111,7 @@ print()
 print('list(mydict.items())')
 print(list(mydict.items()))
 
+#%%
 print()
 print("mydict['a'] is a value   = ", mydict['a'])
 
@@ -66,14 +141,20 @@ print(mydict['f'])
 # %%
 
 ## adding to list
+mylist  = ['a', 'b', 'c']
 mylist2 = ['d', 'e']
-mylist.append(mylist2)
-mylist.append('f')
-mylist.append(mylist2)
+mylist = mylist + mylist2
 print(mylist)
 
+## add to list
+mylist.append(['f', 'g'])
+mylist.append('h')
+mylist.append('i')
+#mylist.append(mylist2)
+#mylist.append('f')
+#mylist.append(mylist2)
+print(mylist)
 
-#%%
 ## can flatten the list
 from itertools import chain
 list(chain.from_iterable(mylist))
@@ -88,3 +169,5 @@ for i, thing in enumerate(mylist):
 # enumerate dictionary runs through each key
 for i, key in enumerate(mydict):
     print('i = ', i, ' , key = ', key, ', value = mydict[key] = ', mydict[key])
+
+# %%
