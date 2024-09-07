@@ -1,7 +1,7 @@
 #!$HOME/.conda/envs/py39/bin/python
 
 #%%
-# C-S-p 'Python: Select Interpreter'
+# VSCode: C-S-p 'Python: Select Interpreter'
 import pandas as pd
 import numpy as np
 
