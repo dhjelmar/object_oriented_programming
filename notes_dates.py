@@ -21,3 +21,24 @@ print(df)
 
 print('datetime type =', type(df.DateTime[0]))
 print('date.    type =', type(df.Date[0]))
+
+########$$
+
+#timestamp is the standard pandas format that should be consistent with datetime.
+
+# Does read from excel come in as string or some date format?
+
+df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
+df
+
+
+# https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html
+
+>>> pd.to_datetime(['2018-10-26 12:00 -0530', '2018-10-26 12:00 -0500'],
+...                utc=True)
+DatetimeIndex(['2018-10-26 17:30:00+00:00', '2018-10-26 17:00:00+00:00'],
+              dtype='datetime64[ns, UTC]', freq=None)
+
+>>> pd.to_datetime(['2018-10-26 12:00', datetime(2020, 1, 1, 18)], utc=True)
+DatetimeIndex(['2018-10-26 12:00:00+00:00', '2020-01-01 18:00:00+00:00'],
+              dtype='datetime64[ns, UTC]', freq=None)
